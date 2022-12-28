@@ -1,3 +1,6 @@
+# SAT: Self-supervised Auto-regressive Transformer for End-to-end Autonomous Driving
+Xijun Wang, Fuxiao Liu
+
 ## Setup
 Download and setup CARLA 0.9.10.1
 ```
