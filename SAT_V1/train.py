@@ -13,17 +13,17 @@ import pytorch_lightning as pl
 from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning.plugins import DDPPlugin
 
-from model import TCP
+from model import SAT
 from data import CARLA_Data
 from config import GlobalConfig
 
 
-class TCP_planner(pl.LightningModule):
+class SAT_planner(pl.LightningModule):
 	def __init__(self, config, lr):
 		super().__init__()
 		self.lr = lr
 		self.config = config
-		self.model = TCP(config)
+		self.model = SAT(config)
 		self._load_weight()
 
 	def _load_weight(self):
@@ -153,7 +153,7 @@ class TCP_planner(pl.LightningModule):
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
 
-	parser.add_argument('--id', type=str, default='TCP', help='Unique experiment identifier.')
+	parser.add_argument('--id', type=str, default='SAT', help='Unique experiment identifier.')
 	parser.add_argument('--epochs', type=int, default=120, help='Number of train epochs.')
 	parser.add_argument('--lr', type=float, default=0.0001, help='Learning rate.')
 	parser.add_argument('--val_every', type=int, default=3, help='Validation frequency (epochs).')
@@ -176,7 +176,7 @@ if __name__ == "__main__":
 	dataloader_train = DataLoader(train_set, batch_size=args.batch_size, shuffle=True, num_workers=8)
 	dataloader_val = DataLoader(val_set, batch_size=args.batch_size, shuffle=False, num_workers=8)
 
-	TCP_model = TCP_planner(config, args.lr)
+	SAT_model = SAT_planner(config, args.lr)
 
 	checkpoint_callback = ModelCheckpoint(save_weights_only=False, mode="min", monitor="val_loss", save_top_k=2, save_last=True,
 											dirpath=args.logdir, filename="best_{epoch:02d}-{val_loss:.3f}")
@@ -197,7 +197,7 @@ if __name__ == "__main__":
 											max_epochs = args.epochs
 											)
 
-	trainer.fit(TCP_model, dataloader_train, dataloader_val)
+	trainer.fit(SAT_model, dataloader_train, dataloader_val)
 
 
 
