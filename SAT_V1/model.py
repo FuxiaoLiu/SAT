@@ -28,7 +28,7 @@ class PIDController(object):
 
 		return self._K_P * error + self._K_I * integral + self._K_D * derivative
 
-class TCP(nn.Module):
+class SAT(nn.Module):
 
 	def __init__(self, config):
 		super().__init__()
