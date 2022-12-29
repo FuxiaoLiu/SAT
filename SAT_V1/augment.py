@@ -1,7 +1,4 @@
-#######################################################################################################
-# This file is borrowed from COiLTRAiNE https://github.com/felipecode/coiltraine by Felipe Codevilla  #
-# COiLTRAiNE itself is under MIT License                                                              #
-#######################################################################################################
+
 
 
 import imgaug as ia
