@@ -35,7 +35,7 @@ Download our dataset through [GoogleDrive](https://drive.google.com/file/d/1A6k0
 First, set the dataset path in ``SAT/config.py``.
 Training:
 ```
-python SAT/train.py --gpus NUM_OF_GPUS
+python SAT_v1/train.py --gpus NUM_OF_GPUS
 ```
 
 ## Evaluation
